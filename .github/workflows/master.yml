@@ -7,7 +7,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v1
@@ -15,8 +15,9 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: npm install, build
+    - name: build
       run: |
+        sudo chmod 777 gradlew
         ./gradlew jsWebMinWebpack
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
