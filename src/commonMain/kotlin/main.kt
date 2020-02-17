@@ -26,7 +26,7 @@ object MyModule : Module() {
 
 class MainScene() : Scene() {
     override suspend fun Container.sceneInit() {
-        uiTextButton(text="场景1").onClick {
+        uiTextButton(text="1").onClick {
 			launchImmediately {
 				sceneContainer.changeTo<MyScene1>()
 			}

@@ -13,5 +13,8 @@ buildscript {
 apply plugin: "korge"
 
 korge {
-	id = "com.sample.demo"
+	id = "site.jihuayu.project"
+	name = "game"
+	exeBaseName = "game"
+	version = "0.0.1"
 }
