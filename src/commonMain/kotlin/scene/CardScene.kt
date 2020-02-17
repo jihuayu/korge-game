@@ -39,6 +39,7 @@ class MyScene1 : Scene() {
                             (rect.globalY+rect.height-globalY-height)*(rect.globalY+rect.height-globalY-height)>30000){
                         view.x = sx;
                         view.y = sy;
+
                     }
                     else{
                         this@sceneInit.removeChild(this@dragImage)
