@@ -2,6 +2,8 @@ package scene
 
 import com.soywiz.klock.seconds
 import com.soywiz.korge.input.onMouseDrag
+import com.soywiz.korge.particle.particleEmitter
+import com.soywiz.korge.particle.readParticle
 import com.soywiz.korge.scene.Scene
 import com.soywiz.korge.tween.moveTo
 import com.soywiz.korge.view.*
@@ -10,18 +12,19 @@ import com.soywiz.korim.format.readBitmap
 import com.soywiz.korio.file.std.resourcesVfs
 import com.soywiz.korma.geom.Point
 import com.soywiz.korma.geom.shape.Shape2d
-import dragImage
 
 class MyScene1 : Scene() {
     var over = false;
     override suspend fun Container.sceneInit() {
+        val emitter = resourcesVfs["particle/particle.pex"].readParticle()
+        particleEmitter(emitter).position(views.virtualWidth * 0.5, views.virtualHeight * 0.75)
         val cardImg = resourcesVfs["card.png"].readBitmap()
         val ans = resourcesVfs["korge.png"].readBitmap()
         val rect = solidRect(100,100, Colors.BLUE){
             position(600,400)
         }
         for (i in 1..4)
-        dragImage(cardImg){
+        image(cardImg){
             position(i*(cardImg.width+10),0);
             val view = this
             var sx = 0.0
@@ -39,10 +42,9 @@ class MyScene1 : Scene() {
                             (rect.globalY+rect.height-globalY-height)*(rect.globalY+rect.height-globalY-height)>30000){
                         view.x = sx;
                         view.y = sy;
-
                     }
                     else{
-                        this@sceneInit.removeChild(this@dragImage)
+                        this@sceneInit.removeChild(this@image)
                         this@sceneInit.removeChild(rect)
                         this@sceneInit+=image(ans){
                             position(rect.pos)
