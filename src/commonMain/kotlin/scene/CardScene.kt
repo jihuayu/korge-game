@@ -22,7 +22,7 @@ class MyScene1 : Scene() {
         val rect = solidRect(100, 100, Colors.BLUE) {
             position(600, 400)
         }
-        for (i in 1..4)
+        for (i in 1..4) {
             image(cardImg) {
                 position(i * (cardImg.width + 10), 0);
                 val view = this
@@ -59,5 +59,6 @@ class MyScene1 : Scene() {
                     }
                 }
             }
+        }
     }
 }
